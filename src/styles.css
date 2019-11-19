@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+table {
+    width: 100%;
+      margin-top: 20px;
+  }
+  
+ 
+  
+  .example-container {
+    position: relative;
+    min-height: 200px;
+  }
+
+.bg-cyan {
+  background-color: #CCCCCC;
+}
+
+input.ng-invalid {
+  border: 1px solid #f00 !important;
+}

@@ -1,0 +1,36 @@
+<div class="container mt-2">
+  <div class="card text-center">
+    <div class="card-header bg-cyan">
+      <h3>Formulario Unidades de Medida</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="unitMeasureForm">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="">Descripcion</label>
+              <input type="text" class="form-control" formControlName="Description">
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+      <div class="row">
+
+        <div class="col-4">
+          <button class="btn btn-danger btn-block" routerLink="../">Salir</button>
+        </div>
+
+        <div class="col-4">
+          <button class="btn btn-primary btn-block" (click)="unitMeasureForm.reset()">Limpiar</button>
+        </div>
+
+
+        <div class="col-4">
+          <button class="btn btn-info btn-block" [disabled]="unitMeasureForm.invalid" (click)="save()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

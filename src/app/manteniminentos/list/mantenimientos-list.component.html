@@ -1,0 +1,10 @@
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col mant" *ngFor="let mant of mantenimientos">
+      <mat-card [routerLink]="mant.name | lowercase">
+        <h4 mat-line>{{ mant.name }}</h4>
+      </mat-card>
+    </div>
+  </div>
+</div>

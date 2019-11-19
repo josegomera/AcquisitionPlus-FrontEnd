@@ -1,0 +1,72 @@
+<div class="container mt-2">
+  <div class="card text-center">
+      <div class="card-header bg-cyan">
+          <h3>Products Form</h3>
+      </div>
+      <div class="card-body">
+          <form [formGroup]="productForm">
+
+              <div class="row">
+                  <div class="col-6">
+                      <div class="form-group">
+                          <label for="">Brand</label>
+                          <input type="text" class="form-control" formControlName="brand">
+                      </div>
+                  </div>
+
+                  <div class="col-6">
+                      <div class="form-group">
+                          <label for="">Description</label>
+                          <input type="text" class="form-control" formControlName="description">
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                     <label for="">Stock</label>
+                     <input type="number" class="form-control" formControlName="stock">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Supplier</label>
+                        <ng-select [items]="listSupplier" bindLabel="supplier" autofocus bindValue="id"
+                            formControlName="idSupplier">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Unit Of Measure</label>
+                        <ng-select [items]="listUnit" bindLabel="unit" autofocus bindValue="id"
+                        formControlName="idUnitOfMeasurement">
+                    </ng-select>
+                    </div>
+                </div>
+            </div>
+
+
+          </form>
+          <div class="row">
+
+              <div class="col-4">
+                  <button class="btn btn-danger btn-block" routerLink="../../">Salir</button>
+              </div>
+
+              <div class="col-4">
+                  <button class="btn btn-primary btn-block" (click)="productForm.reset()">Limpiar</button>
+              </div>
+
+              <div class="col-4">
+                  <button class="btn btn-info btn-block" [disabled]="productForm.invalid"
+                      (click)="save()">{{ buttonNameDisplay }}</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

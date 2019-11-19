@@ -1,0 +1,71 @@
+<div class="container mt-2">
+    <div class="card text-center">
+        <div class="card-header bg-cyan">
+            <h3>Purchase Order Form</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="puchaseOrderForm">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="">Employee</label>
+                            <ng-select [items]="listEmployee" bindLabel="fullName" autofocus bindValue="id"
+                                formControlName="idEmployee">
+                            </ng-select>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="">Product</label>
+                            <ng-select [items]="listProduct" bindLabel="product" autofocus bindValue="id"
+                                formControlName="idProduct">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="">Amount</label>
+                            <input type="number" class="form-control" formControlName="amount"
+                                (change)="totalCalculation()" onkeypress="return event.charCode >= 48" min="1">
+                        </div>
+                    </div>
+                    <!-- //mask="separator.2" thousandSeparator="," prefix="RD$ " [dropSpecialCharacters]="false" -->
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="">Unit Cost</label>
+                            <input type="number" class="form-control" formControlName="unitCost"
+                                (change)="totalCalculation()" onkeypress="return event.charCode >= 48" min="1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Total</label>
+                            <label
+                                class="form-control">{{ puchaseOrderForm.get('total').value | currency:"RD$" }}</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+
+                <div class="col-4">
+                    <button class="btn btn-danger btn-block" routerLink="../../">Quit</button>
+                </div>
+
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block" (click)="puchaseOrderForm.reset()">Clean</button>
+                </div>
+
+                <div class="col-4">
+                    <button class="btn btn-info btn-block" [disabled]="puchaseOrderForm.invalid"
+                        (click)="save()">{{ buttonNameDisplay }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,12 @@
-.fixBtn {
-  position: fixed;
-  bottom: 580px;
-  right: 300px;
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
 }

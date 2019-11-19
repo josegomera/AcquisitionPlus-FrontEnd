@@ -19,16 +19,16 @@
       <div class="row">
 
         <div class="col-4">
-          <button class="btn btn-danger btn-block" routerLink="../">Salir</button>
+          <button class="btn btn-danger btn-block" routerLink="../">Quit</button>
         </div>
 
         <div class="col-4">
-          <button class="btn btn-primary btn-block" (click)="unitMeasureForm.reset()">Limpiar</button>
+          <button class="btn btn-primary btn-block" (click)="unitMeasureForm.reset()">Clean</button>
         </div>
 
 
         <div class="col-4">
-          <button class="btn btn-info btn-block" [disabled]="unitMeasureForm.invalid" (click)="save()">Guardar</button>
+          <button class="btn btn-info btn-block" [disabled]="unitMeasureForm.invalid" (click)="save()">Save</button>
         </div>
       </div>
     </div>

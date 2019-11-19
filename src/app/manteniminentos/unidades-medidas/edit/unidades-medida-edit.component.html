@@ -12,27 +12,27 @@
                                     <input type="text" class="form-control" formControlName="description">
                                 </div>
                     </div>
-                       
+
                 </div>
-    
-             
-                
-    
+
+
+
+
               </form>
               <div class="row">
-                    
+
                     <div class="col-4">
-                            <button class="btn btn-danger btn-block" routerLink="../../">Salir</button>
+                            <button class="btn btn-danger btn-block" routerLink="../../">Quit</button>
                         </div>
-    
+
                     <div class="col-4">
-                            <button class="btn btn-primary btn-block" (click)="unitMeasureForm.reset()" >Limpiar</button>
+                            <button class="btn btn-primary btn-block" (click)="unitMeasureForm.reset()" >Clean</button>
                     </div>
-    
-    
+
+
                         <div class="col-4">
-                                <button class="btn btn-block btn-warning" [disabled]="unitMeasureForm.invalid"
-                                 (click)="save()">Actualizar</button>
+                                <button class="btn btn-block btn-info" [disabled]="unitMeasureForm.invalid"
+                                 (click)="save()">Update</button>
                             </div>
                 </div>
             </div>

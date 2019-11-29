@@ -1,0 +1,77 @@
+<div class="container mt-2">
+    <div class="card text-center">
+      <div class="card-header bg-cyan">
+        <h3>Formulario de Empleados</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="empleadosForm">
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                  <label for="">Last Name</label>
+                  <input type="text" class="form-control" formControlName="lastName">
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="">Identification</label>
+                  <input type="text" mask="000-0000000-0" class="form-control" formControlName="identificationNumber">
+                </div>
+              </div>
+  
+          </div>
+  
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Telephone</label>
+                <input type="text" class="form-control" mask="000-000-0000 "formControlName="telephoneNumber">
+              </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                  <label for="">Position</label>
+                  <input type="text" class="form-control" formControlName="position">
+                </div>
+              </div>
+
+              <div class="form-group col-4">
+                <label for="">Departament</label>
+                <ng-select [items]="departments" bindLabel="text" autofocus bindValue="id"
+                    formControlName="idDepartment">
+                </ng-select>
+            </div>
+            
+  
+          </div>
+
+        </form>
+        <div class="row">
+  
+          <div class="col-4">
+            <button class="btn btn-danger btn-block" (click)="onQuit()">Quit</button>
+          </div>
+  
+          <div class="col-4">
+            <button class="btn btn-primary btn-block" (click)="empleadosForm.reset()">Clean</button>
+          </div>
+  
+  
+          <div class="col-4">
+            <button class="btn btn-info btn-block" [disabled]="empleadosForm.invalid" (click)="save()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

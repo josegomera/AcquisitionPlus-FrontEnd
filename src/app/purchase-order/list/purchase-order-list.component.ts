@@ -24,26 +24,23 @@ export class PurchaseOrderListComponent implements OnInit {
   dataSource = new MatTableDataSource([]);
   pipe: DatePipe;
 
-  constructor(private actRoute: ActivatedRoute) {
-    // this.pipe = new DatePipe('en');
-    this.dataSource.filterPredicate = (data, filter) => {
-      if (this.fromDate && this.toDate) {
-        return data.CreationDate >= this.fromDate && data.CreationDate <= this.toDate;
-      }
-      return true;
-    }
-  }
+  constructor(private actRoute: ActivatedRoute) {  }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
-
 
   ngOnInit() {
     this.actRoute.data.subscribe(data => {
       this.dataSource = new MatTableDataSource(data.purchase);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = (data, filter) => {
+        if (this.fromDate && this.toDate) {
+          let orderDate = new Date(data.orderDate);
+          return orderDate >= this.fromDate && orderDate <= this.toDate;
+        }
+        return true;
+      }
     });
   }
 
@@ -64,7 +61,7 @@ export class PurchaseOrderListComponent implements OnInit {
   // }
 
   applyFilter() {
-    this.dataSource.filter = ''+Math.random();
-    console.log(this.dataSource.filteredData);
+    this.dataSource.filter = '' + Math.random();
+    this.filterForm.reset();
   }
 }

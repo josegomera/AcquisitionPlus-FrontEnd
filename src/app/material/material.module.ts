@@ -9,7 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule, MatInputModule, MatPaginatorModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatPaginatorModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
+
 
 
 
@@ -29,7 +30,10 @@ import { MatFormFieldModule, MatInputModule, MatPaginatorModule } from '@angular
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatDatepickerModule
+
 
   ],
   exports: [
@@ -45,7 +49,9 @@ import { MatFormFieldModule, MatInputModule, MatPaginatorModule } from '@angular
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ]
 })
 export class MaterialModule { }

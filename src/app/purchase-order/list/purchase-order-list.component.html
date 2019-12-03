@@ -7,19 +7,55 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       <button class="button-add" mat-raised-button color="primary" [routerLink]="['add', 0]"> New Purchase</button>
     </div>
-    <div class="col-6">
+    <!-- <div class="col-6">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
+    </div> -->
+    <div class="col-8">
+      <form class="date-block" [formGroup]="filterForm">
+        <div class="row">
+            <div class="col-5">
+                <div class="date-block__list">
+                    <mat-form-field>
+                      <input matInput
+                        [matDatepicker]="fromDate"
+                        placeholder="From Date"
+                        formControlName="fromDate">
+                      <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                      <mat-datepicker #fromDate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+            </div>
+            <div class="col-5">
+                <div class="date-block__list">
+                    <mat-form-field>
+                      <input matInput
+                        [matDatepicker]="toDate"
+                        placeholder="To Date"
+                        formControlName="toDate">
+                      <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                      <mat-datepicker #toDate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+            </div>
+            <div class="col-2">
+                <button mat-icon-button color="warn" class="primary" (click)="applyFilter()">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                </button>
+            </div>
+        </div>
+      </form>
     </div>
+
   </div>
   <div class="row">
     <div class="col-12">
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <table #filteredTable mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
           <ng-container matColumnDef="orderNumber">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> No. Orden </th>

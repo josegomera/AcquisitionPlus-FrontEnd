@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule, DatePipe } from "@angular/common";
 import { PurchaseOrderListComponent } from "./list/purchase-order-list.component";
 import { MaterialModule } from "../material/material.module";
 import { PurchaseOrderRoutingModule } from "./purchase-order-routing.module";
@@ -19,6 +19,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
     FormsModule,
     NgxMaskModule.forRoot(),
     NgSelectModule
-  ]
+  ],
+  providers: [DatePipe],
 })
 export class PurchaseOrderModule {}

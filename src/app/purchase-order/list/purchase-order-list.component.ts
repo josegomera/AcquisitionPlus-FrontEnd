@@ -24,7 +24,7 @@ export class PurchaseOrderListComponent implements OnInit {
   dataSource = new MatTableDataSource([]);
   pipe: DatePipe;
 
-  constructor(private actRoute: ActivatedRoute) {  }
+  constructor(private actRoute: ActivatedRoute) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -36,8 +36,11 @@ export class PurchaseOrderListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = (data, filter) => {
         if (this.fromDate && this.toDate) {
-          let orderDate = new Date(data.orderDate);
-          return orderDate >= this.fromDate && orderDate <= this.toDate;
+          this.pipe = new DatePipe('en')
+          let orderDate = this.pipe.transform(data.orderDate, 'yyyy-MM-dd');
+          let fromDateInternal = this.pipe.transform(this.fromDate,'yyyy-MM-dd');
+          let toDateInternal =this.pipe.transform(this.toDate,'yyyy-MM-dd');
+          return orderDate >= fromDateInternal && orderDate <= toDateInternal;
         }
         return true;
       }
@@ -61,6 +64,7 @@ export class PurchaseOrderListComponent implements OnInit {
   // }
 
   applyFilter() {
+    // console.log(filterValue)
     this.dataSource.filter = '' + Math.random();
     this.filterForm.reset();
   }

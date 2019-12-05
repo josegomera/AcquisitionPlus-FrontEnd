@@ -7,6 +7,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({

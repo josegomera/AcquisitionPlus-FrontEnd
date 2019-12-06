@@ -6,6 +6,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { FormControl, FormGroup } from "@angular/forms";
 import { DatePipe } from "@angular/common";
 import { filter } from "rxjs/operators";
+import { PurchaseOrderService } from 'src/app/core/services/purchase-order.service';
 
 @Component({
   selector: "app-purchase-order-list",
@@ -26,7 +27,9 @@ export class PurchaseOrderListComponent implements OnInit {
   amount: number = 0;
 
 
-  constructor(private actRoute: ActivatedRoute) {}
+  constructor(private actRoute: ActivatedRoute,
+    private purchase: PurchaseOrderService
+    ) {}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -43,16 +46,13 @@ export class PurchaseOrderListComponent implements OnInit {
           let orderDate = this.pipe.transform(data.orderDate, "yyyy-MM-dd");
           let fromDateInternal = this.pipe.transform(this.fromDate, "yyyy-MM-dd");
           let toDateInternal = this.pipe.transform(this.toDate, "yyyy-MM-dd");
-          return orderDate >= fromDateInternal && orderDate <= toDateInternal;
+          let Isinterval = orderDate >= fromDateInternal && orderDate <= toDateInternal;
+      
+          return Isinterval ;
         }
         return true;
-      };
-
-      for (let d of this.dataSource.data) {
-        this.amount += d.total;
-      }
-      this.syncForm.setValue({ total: `RD$ ${this.amount}`, description: "" });
-    });
+      };     
+    }); 
   }
 
   filterForm = new FormGroup({
@@ -65,6 +65,26 @@ export class PurchaseOrderListComponent implements OnInit {
     description: new FormControl()
   });
 
+  syncAccounting(){
+    let amount = +this.amount;
+    let description = this.syncForm.get("description").value;
+
+    let asiento = {
+      description,
+      amount
+    }
+    console.log(asiento);
+
+    this.purchase.syncAccount(asiento).subscribe(data => { 
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+    });
+
+    this.syncForm.reset();
+
+  }
+
   get fromDate() {
     return this.filterForm.get("fromDate").value;
   }
@@ -73,7 +93,11 @@ export class PurchaseOrderListComponent implements OnInit {
   }
 
   applyFilter() {
+    this.amount = 0;
     this.dataSource.filter = "" + Math.random();
+     for (let d of this.dataSource.filteredData) {
+       this.amount += d.total;     };
+     this.syncForm.setValue({ total: this.amount, description: "" });
     this.filterForm.reset();
   }
 }

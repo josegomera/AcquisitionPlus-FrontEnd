@@ -27,10 +27,12 @@ export class ProductosAddComponent implements OnInit {
     this.productForm = this.fb.group({
       brand: [null, [Validators.required]],
       description: [null, [Validators.required]],
+      unitCost: [null, [Validators.required]],
       stock: [null, [Validators.required]],
       idSupplier: [null, [Validators.required]],
       idUnitOfMeasurement: [null, [Validators.required]]
     });
+    
 
     this.actRoute.data.subscribe(data => {
       this.listSupplier = data.listSupplier;

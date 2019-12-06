@@ -18,6 +18,10 @@ export class PurchaseOrderService {
     return this.http.post(`${environment.api}/PurchaseOrders`, payload);
   }
 
+  syncAccount(payload) {
+    return this.http.post(`${environment.api}/PurchaseOrders/Contabilize/`, payload);
+  }
+
   updatePurchaseOrders(payload) {
     return this.http.put(`${environment.api}/PurchaseOrders`, payload);
   }

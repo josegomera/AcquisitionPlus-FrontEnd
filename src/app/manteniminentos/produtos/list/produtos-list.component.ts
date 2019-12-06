@@ -14,9 +14,10 @@ export class ProdutosListComponent implements OnInit {
     "number",
     "description",
     "brand",
+    "unitCost",
     "stock",
     "creationDate",
-    "accion"
+    "Action"
   ];
   dataSource = new MatTableDataSource([]);
   constructor(private actRoute: ActivatedRoute) {}

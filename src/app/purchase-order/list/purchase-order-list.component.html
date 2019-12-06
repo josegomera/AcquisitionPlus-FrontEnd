@@ -104,14 +104,14 @@
           <ng-container matColumnDef="unitCost">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit Cost</th>
             <td mat-cell *matCellDef="let element">
-              {{ element.unitCost | currency: "RD$" }}
+              {{ element.unitCost | currency: "USD$" }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="total">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
             <td mat-cell *matCellDef="let element">
-              {{ element.total | currency: "RD$" }}
+              {{ element.total | currency: "USD$" }}
             </td>
             <td mat-footer-cell *matFooterCellDef>
               {{ getTotalCost() | currency }}
@@ -150,7 +150,10 @@
         <div class="row">
           <div class="col-2">
             <mat-form-field>
-              <input formControlName="total" matInput />
+              <input matInput formControlName="total" [dropSpecialCharacters]="false" 
+              mask="separator.0" 
+              thousandSeparator=","
+              placeholder="Total" />
             </mat-form-field>
           </div>
           <div class="col-8">
@@ -163,7 +166,7 @@
             </mat-form-field>
           </div>
           <div class="col-2">
-            <button mat-flat-button color="accent">Sync </button>
+            <button mat-flat-button color="accent" (click)="syncAccounting()" >Sync </button>
           </div>
         </div>
       </form>

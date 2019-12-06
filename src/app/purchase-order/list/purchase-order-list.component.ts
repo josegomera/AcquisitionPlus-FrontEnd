@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MatSort } from "@angular/material/sort";
 import { MatPaginator } from "@angular/material/paginator";
 import { FormControl, FormGroup } from "@angular/forms";
@@ -28,7 +28,8 @@ export class PurchaseOrderListComponent implements OnInit {
 
 
   constructor(private actRoute: ActivatedRoute,
-    private purchase: PurchaseOrderService
+    private purchase: PurchaseOrderService,
+    private router : Router
     ) {}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -68,15 +69,18 @@ export class PurchaseOrderListComponent implements OnInit {
   syncAccounting(){
     let amount = +this.amount;
     let description = this.syncForm.get("description").value;
+    let purchaseOrders = this.dataSource.filteredData;
 
     let asiento = {
       description,
-      amount
+      amount,
+      purchaseOrders
     }
     console.log(asiento);
 
     this.purchase.syncAccount(asiento).subscribe(data => { 
       console.log(data);
+      this.router.navigate([this.router.url]);
     }, (error) => {
       console.log(error);
     });

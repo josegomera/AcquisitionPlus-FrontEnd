@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://api-acquisitionplusweb.azurewebsites.net/api/v1'
-  // api: 'https://localhost:44374/api/v1'
+  // api: 'https://api-acquisitionplusweb.azurewebsites.net/api/v1'
+  api: 'https://localhost:44374/api/v1'
 };
 
 /*

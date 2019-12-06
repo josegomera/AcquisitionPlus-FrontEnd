@@ -8,7 +8,8 @@ import { ListProductResolver } from '../core/resolvers/listProducts.resolver';
 
 
 const routes: Routes = [
-  {path: '', component: PurchaseOrderListComponent, resolve: {purchase: PurchaseOrderResolver }},
+  {path: '', component: PurchaseOrderListComponent, resolve: {purchase: PurchaseOrderResolver }
+  , runGuardsAndResolvers: 'always'},
   {path: 'add/:id', component: PurchaceOrderAddComponent, resolve: {listEmployee: ListEmployeeResolver, listProduct: ListProductResolver }}
 ];
 

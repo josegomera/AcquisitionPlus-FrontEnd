@@ -42,7 +42,8 @@
               <ng-container matColumnDef="accion">
                 <th mat-header-cell *matHeaderCellDef> Action </th>
                 <td mat-cell *matCellDef="let element">
-                  <button mat-stroked-button color="primary" [routerLink]="['edit',element.id]"> Edit</button> </td>
+                  <a mat-stroked-button color="primary" [routerLink]="['edit',element.id]"> Edit</a> 
+                </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

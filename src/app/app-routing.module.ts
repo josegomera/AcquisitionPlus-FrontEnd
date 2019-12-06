@@ -9,7 +9,8 @@ const routes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(
-     routes
+     routes,
+     {scrollPositionRestoration: 'top', onSameUrlNavigation: 'reload'}
     )
   ],
   exports: [RouterModule]

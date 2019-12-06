@@ -24,10 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
 export class UnidadesMedidasRoutingModule { }

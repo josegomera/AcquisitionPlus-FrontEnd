@@ -1,1 +1,68 @@
-<p>supplier works!</p>
+<div class="container mt-2">
+  <div class="card text-center">
+    <div class="card-header bg-cyan">
+      <h3>Form Suppliers</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="suplidoresForm">
+        <div class="row">
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="">Identification Type</label>
+                    <ng-select formControlName="identificationType">
+                        <ng-option *ngFor="let type of types" [value]="type.id">{{ type.type }}</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+          <!-- CEDULA -->
+          <div class="col-4" *ngIf="suplidoresForm.get('identificationType').value == 1">
+            <div class="form-group">
+              <label for="">Identification</label>
+              <input type="text"
+                     mask="000-0000000-0"
+                     class="form-control"
+                     formControlName="identification"
+                     [control]="suplidoresForm.get('identification_Rnc')"
+                     (blur)="getCedulaFromPadron()"
+                     PersonalIdValidation>
+            </div>
+          </div>
+          <!-- RNC -->
+          <div class="col-4" *ngIf="suplidoresForm.get('identificationType').value == 2">
+            <div class="form-group">
+              <label for="">Identification</label>
+              <input type="text"
+                     mask="0-000-0000-0"
+                     class="form-control"
+                     formControlName="identification">
+            </div>
+          </div>
+
+          <div class="col-4">
+              <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+            </div>
+        </div>
+      </form>
+      <div class="row">
+
+        <div class="col-4">
+          <button class="btn btn-danger btn-block" routerLink="../../">Quit</button>
+      </div>
+
+        <div class="col-4">
+          <button class="btn btn-primary btn-block" (click)="suplidoresForm.reset()">Clean</button>
+        </div>
+
+
+        <div class="col-4">
+            <button class="btn btn-info btn-block" [disabled]="suplidoresForm.invalid"
+                (click)="save()">{{ buttonNameDisplay }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

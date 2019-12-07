@@ -5,7 +5,8 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { SuplidoresRoutingModule } from './suplidores-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SupplierComponent } from './add/supplier/supplier.component';
-
+import { NgxMaskModule } from "ngx-mask";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { SupplierComponent } from './add/supplier/supplier.component';
     CommonModule,
     MaterialModule,
     SuplidoresRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
+    NgSelectModule
   ]
 })
 export class SuplidoresModule { }

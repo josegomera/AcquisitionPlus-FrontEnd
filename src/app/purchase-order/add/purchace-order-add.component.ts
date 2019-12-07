@@ -25,7 +25,7 @@ export class PurchaceOrderAddComponent implements OnInit {
 
   ngOnInit() {
     this.puchaseOrderForm = this.fb.group({
-      amount: [null, [Validators.required]],
+      amount: [{ disabled: true, value: null }, Validators.required],
       unitCost: [{ disabled: true, value: null }],
       idEmployee: [null, [Validators.required]],
       idProduct: [null, [Validators.required]],
@@ -35,6 +35,8 @@ export class PurchaceOrderAddComponent implements OnInit {
       this.listEmployee = data.listEmployee;
       this.listProduct = data.listProduct;
     });
+
+    console.log(this.listProduct);
 
     this.setUnitCost();
 
@@ -49,7 +51,24 @@ export class PurchaceOrderAddComponent implements OnInit {
       });
     }
 
+    this.puchaseOrderForm.get('amount').valueChanges.subscribe((value) => {
+      let productId = this.puchaseOrderForm.get('idProduct').value;
+      let product = this.listProduct.find(p => p.id == productId);
 
+      if(product && value > product.stock){
+        this.puchaseOrderForm.get('amount').setValue('');
+      }
+
+    })
+
+  this.puchaseOrderForm.get('idProduct').valueChanges.subscribe((value) => {
+    if(value == null){
+      this.puchaseOrderForm.get('amount').setValue('');
+      this.puchaseOrderForm.get('amount').disable();
+    }else{
+      this.puchaseOrderForm.get('amount').enable();
+    }
+  });
   }
 
   setUnitCost(){

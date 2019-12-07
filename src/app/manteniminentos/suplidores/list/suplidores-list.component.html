@@ -10,7 +10,7 @@
 
     <div class="row">
       <div class="col-6">
-          <button mat-raised-button color="primary"> New Supplier</button>
+        <button class="button-add"  mat-raised-button color="primary" [routerLink]="['add', 0]" >New Supplier </button>
       </div>
       <div class="col-6">
           <mat-form-field>
@@ -47,7 +47,7 @@
                   <ng-container matColumnDef="accion">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
                     <td mat-cell *matCellDef="let element">
-                      <a mat-stroked-button color="primary" [routerLink]="['edit',element.id]"> Edit</a> 
+                      <a mat-stroked-button color="primary" [routerLink]="['add', element.id]"> Edit</a>
                     </td>
                   </ng-container>
 

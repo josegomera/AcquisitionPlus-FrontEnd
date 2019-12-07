@@ -13,4 +13,20 @@ export class SupplierService {
   getListSuppliers() {
     return this.http.get(`${environment.api}/Suppliers/GetSuppliers`);
   }
+
+  getSuppliersById(id) {
+    return this.http.get(`${environment.api}/Suppliers/${id}`);
+  }
+
+  addSupplier(payload) {
+    return this.http.post(`${environment.api}/Suppliers`, payload);
+  }
+
+  updatesupplier(payload) {
+    return this.http.put(`${environment.api}/Suppliers`, payload);
+  }
+
+  getCedulaByNumber(payload) {
+    return this.http.get(`https://motorcreditowf.azurewebsites.net/api/Padron/${payload}`);
+  }
 }

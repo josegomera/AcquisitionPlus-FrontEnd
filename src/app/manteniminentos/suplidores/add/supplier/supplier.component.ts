@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   templateUrl: './supplier.component.html',
   styleUrls: ['./supplier.component.css']
 })
+
 export class SupplierComponent implements OnInit {
   suplidoresForm: FormGroup;
   id: number;
@@ -19,6 +20,8 @@ export class SupplierComponent implements OnInit {
     {id: 2, type: "RNC"}
   ];
 
+  persona: any;
+  empresa: any;
   constructor(private fb: FormBuilder,
     private actRoute: ActivatedRoute,
     private supplier: SupplierService,
@@ -27,7 +30,7 @@ export class SupplierComponent implements OnInit {
   ngOnInit() {
     this.suplidoresForm = this.fb.group({
       identificationType:[null, [Validators.required]],
-      identification: [null, [Validators.required]],
+      identification_Rnc: [null, [Validators.required]],
       name: [null, [Validators.required]],
     });
 
@@ -63,12 +66,25 @@ export class SupplierComponent implements OnInit {
     );
   }
 
-  getCedulaFromPadron(){
-    var cedula = this.suplidoresForm.get("identification").value;
-
+  getCedulaFromPadron() {
+    var cedula = this.suplidoresForm.get("identification_Rnc").value;
     if(cedula){
       this.supplier.getCedulaByNumber(cedula).subscribe((data) => {
-        console.log(data);
+        console.log(Object.values(data));
+        this.persona = data;
+        this.suplidoresForm.get("name").setValue(this.persona.Nombres + ' ' + this.persona.Apellidos);
+      },
+      (err) => { console.log(err) }
+      );
+    }
+  }
+
+  getRNC(){
+    var RNC = this.suplidoresForm.get("identification_Rnc").value;
+    if(RNC){
+      this.supplier.getRNCByNumber(RNC).subscribe((data) => {
+        this.empresa = data;
+        this.suplidoresForm.get("name").setValue(this.empresa.Empresa.NombreComercial);
       },
       (err) => { console.log(err) }
       );

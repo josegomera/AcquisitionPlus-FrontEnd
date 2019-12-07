@@ -16,13 +16,15 @@
                 </div>
             </div>
           <!-- CEDULA -->
-          <div class="col-4" *ngIf="suplidoresForm.get('identificationType').value == 1">
+          <!-- *ngIf="suplidoresForm.get('identificationType').value == 1" -->
+          <div class="col-4" *ngIf="suplidoresForm.get('identificationType').value == 1" >
             <div class="form-group">
               <label for="">Identification</label>
               <input type="text"
                      mask="000-0000000-0"
                      class="form-control"
-                     formControlName="identification"
+                     formControlName="identification_Rnc"
+                     [dropSpecialCharacters]="false"
                      [control]="suplidoresForm.get('identification_Rnc')"
                      (blur)="getCedulaFromPadron()"
                      PersonalIdValidation>
@@ -33,9 +35,11 @@
             <div class="form-group">
               <label for="">Identification</label>
               <input type="text"
-                     mask="0-000-0000-0"
+                     mask="0-00-00000-0"
                      class="form-control"
-                     formControlName="identification">
+                     [dropSpecialCharacters]="false"
+                     (blur)="getRNC()"
+                     formControlName="identification_Rnc">
             </div>
           </div>
 

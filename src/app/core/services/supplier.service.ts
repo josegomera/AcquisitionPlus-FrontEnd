@@ -27,6 +27,9 @@ export class SupplierService {
   }
 
   getCedulaByNumber(payload) {
-    return this.http.get(`https://motorcreditowf.azurewebsites.net/api/Padron/${payload}`);
+    return this.http.get(`https://previseguros-beta.azurewebsites.net/api/Clientes/GetByNoIdentificacion/${payload}`);
+  }
+  getRNCByNumber(payload) {
+    return this.http.post(`https://previseguros-beta.azurewebsites.net/api/Empresa/GetByRnc/${payload}`, '');
   }
 }

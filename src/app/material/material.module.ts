@@ -10,12 +10,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule, MatInputModule, MatPaginatorModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
+import { PersonalIdValidationDirective } from '../core/directives/personal-id-validation.directive';
 
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PersonalIdValidationDirective],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -51,7 +52,8 @@ import { MatFormFieldModule, MatInputModule, MatPaginatorModule, MatNativeDateMo
     MatInputModule,
     MatPaginatorModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    PersonalIdValidationDirective
   ]
 })
 export class MaterialModule { }

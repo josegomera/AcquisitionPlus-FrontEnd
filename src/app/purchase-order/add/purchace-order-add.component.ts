@@ -37,7 +37,7 @@ export class PurchaceOrderAddComponent implements OnInit {
     });
 
     this.setUnitCost();
-   
+
     this.id = this.actRoute.snapshot.params.id;
     if (this.id != 0) {
       this.buttonNameDisplay = "Update";
@@ -75,7 +75,6 @@ export class PurchaceOrderAddComponent implements OnInit {
         ...this.purchaseOrderEdit,
         ...this.puchaseOrderForm.getRawValue()
       };
-      console.log(purchaseOrderToUpdate);
       result$ = this.purchase.updatePurchaseOrders(purchaseOrderToUpdate);
     }
 
@@ -94,5 +93,5 @@ export class PurchaceOrderAddComponent implements OnInit {
     this.puchaseOrderForm.get("total").setValue(total);
   }
 
-  
+
 }

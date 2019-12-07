@@ -19,6 +19,6 @@ import { NgxMaskModule } from 'ngx-mask';
     ReactiveFormsModule,
     NgSelectModule,
     NgxMaskModule.forRoot(),
-  ]
+  ],
 })
 export class EmpleadosModule { }

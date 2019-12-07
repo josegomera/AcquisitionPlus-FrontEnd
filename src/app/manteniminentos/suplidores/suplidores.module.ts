@@ -4,11 +4,12 @@ import { SuplidoresListComponent } from './list/suplidores-list.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { SuplidoresRoutingModule } from './suplidores-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SupplierComponent } from './add/supplier/supplier.component';
 
 
 
 @NgModule({
-  declarations: [SuplidoresListComponent],
+  declarations: [SuplidoresListComponent, SupplierComponent],
   imports: [
     CommonModule,
     MaterialModule,

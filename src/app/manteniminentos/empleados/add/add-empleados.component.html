@@ -23,12 +23,17 @@
               <div class="col-4">
                 <div class="form-group">
                   <label for="">Identification</label>
-                  <input type="text" mask="000-0000000-0" class="form-control" formControlName="identificationNumber">
+                  <input type="text"
+                         mask="000-0000000-0"
+                         class="form-control"
+                         formControlName="identificationNumber"
+                         [control]="empleadosForm.get('identificationNumber')"
+                         PersonalIdValidation>
                 </div>
               </div>
-  
+
           </div>
-  
+
 
           <div class="row">
             <div class="col-4">
@@ -51,22 +56,22 @@
                     formControlName="idDepartment">
                 </ng-select>
             </div>
-            
-  
+
+
           </div>
 
         </form>
         <div class="row">
-  
+
           <div class="col-4">
             <button class="btn btn-danger btn-block" (click)="onQuit()">Quit</button>
           </div>
-  
+
           <div class="col-4">
             <button class="btn btn-primary btn-block" (click)="empleadosForm.reset()">Clean</button>
           </div>
-  
-  
+
+
           <div class="col-4">
             <button class="btn btn-info btn-block" [disabled]="empleadosForm.invalid" (click)="save()">Save</button>
           </div>
@@ -74,4 +79,3 @@
       </div>
     </div>
   </div>
-  
